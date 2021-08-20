@@ -1,0 +1,40 @@
+package controller.auth;
+
+import event.auth.registration.RegistrationFormEvent;
+import controller.Controller;
+import model.User;
+
+import java.time.LocalDate;
+
+public class AuthController extends Controller {
+
+    public void register(RegistrationFormEvent formEvent, LocalDate birthday){
+        context.users.increaseLastID();
+        User newUser = new User(context.users.getLastID(),formEvent.getUsername(),formEvent.getPassword1(),
+                formEvent.getProfileName(),formEvent.getFirstName(),formEvent.getLastName(),
+                formEvent.getEmail(),formEvent.getPhoneNumber(),birthday);
+        context.users.add(newUser);
+    }
+
+    public void registerWithoutBirthday(RegistrationFormEvent formEvent){
+        context.users.increaseLastID();
+        User newUser = new User(context.users.getLastID(),formEvent.getUsername(),formEvent.getPassword1(),
+                formEvent.getProfileName(),formEvent.getFirstName(),formEvent.getLastName(),
+                formEvent.getEmail(),formEvent.getPhoneNumber());
+        context.users.add(newUser);
+    }
+
+    public boolean isUsernameAvailable(String username) {
+        if (context.users.getAll()==null){
+            return true;
+        }
+        return !context.users.getAll().stream().anyMatch(user -> user.getUsername().equals(username));
+    }
+
+    public boolean isEmailAvailable(String email){
+        if (context.users.getAll()==null){
+            return true;
+        }
+        return !context.users.getAll().stream().anyMatch(user -> user.getEmail().equals(email));
+    }
+}
