@@ -1,5 +1,8 @@
 package ui.auth;
 
+import javafx.fxml.FXML;
+import ui.Component;
+import ui.auth.signIn.SignInCenter;
 import ui.auth.signIn.SignInCenterFXMLController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,11 +14,28 @@ import java.io.IOException;
 
 public class SignInPage extends Page {
 
+    @FXML
+    private Component signInCenter;
 
     public SignInPage(String fxmlName) {
         super(fxmlName);
+        initialize();
     }
 
+    @Override
+    public void initialize() {
+        SignInPageFXMLController controller = (SignInPageFXMLController)fxmlController;
+        signInCenter = new SignInCenter("signInCenter", this);
+        controller.setPage(this);
+        controller.makeContents();
+    }
+
+    public Component getSignInCenter() {
+        return signInCenter;
+    }
+
+
+//        @Override
 //    public void initialize() {
 //        FXMLLoader mainFxmlLoader = new FXMLLoader();
 //        mainFxmlLoader.setLocation(getClass().getResource("signInPage.fxml"));

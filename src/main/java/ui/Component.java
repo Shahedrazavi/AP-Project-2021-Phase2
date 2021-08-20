@@ -15,7 +15,7 @@ public class Component {
 
     public Component(String fxmlName) {
         URL url = getClass().getResource(Config.getConfig("fxmls").getProperty(fxmlName));
-//        System.out.println(url);
+        System.out.println(url);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         System.out.println(fxmlLoader);
         try {

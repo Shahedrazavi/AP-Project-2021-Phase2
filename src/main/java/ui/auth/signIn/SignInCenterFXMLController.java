@@ -23,7 +23,7 @@ public class SignInCenterFXMLController extends FXMLController implements Initia
 
     SignInFormListener listener;
 
-    private SignInPageFXMLController parentPageFXMLController;
+    private SignInCenter component;
 
     @FXML
     private AnchorPane backButton;
@@ -46,24 +46,21 @@ public class SignInCenterFXMLController extends FXMLController implements Initia
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         errorLabel.setVisible(false);
-        setBackButton();
 
         listener = new SignInFormListener();
     }
 
-    public void setParentPageFXMLController(SignInPageFXMLController parentPageFXMLController) {
-        this.parentPageFXMLController = parentPageFXMLController;
+    @Override
+    public void makeContents() {
+        setBackButton();
     }
 
     public void setBackButton(){
-        FXMLLoader loader = new FXMLLoader();
-        try {
-            loader.setLocation(getClass().getResource("/component/backButton/ui/backButton.fxml"));
-            AnchorPane pane = loader.load();
-            backButton.getChildren().add(pane);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        backButton.getChildren().add(component.getBackButton().getRoot());
+    }
+
+    public void setComponent(SignInCenter component) {
+        this.component = component;
     }
 
     @FXML
@@ -76,6 +73,6 @@ public class SignInCenterFXMLController extends FXMLController implements Initia
     }
 
     public void goToHomePage(User loggedInUser){
-        parentPageFXMLController.goToHomePage(loggedInUser);
+        ((SignInPageFXMLController)component.getParent().getFxmlController()).goToHomePage(loggedInUser);
     }
 }

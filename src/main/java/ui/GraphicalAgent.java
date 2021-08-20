@@ -63,6 +63,7 @@ public class GraphicalAgent {
     }
 
     public void startMainApp(User user){
+        System.out.println("well done");
         this.loggedInUser = user;
         MainPage mainPage = new MainPage(user,"main");
         sceneStack.pop();
