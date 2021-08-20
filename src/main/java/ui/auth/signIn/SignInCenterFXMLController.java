@@ -1,5 +1,6 @@
 package ui.auth.signIn;
 
+import ui.FXMLController;
 import ui.auth.SignInPageFXMLController;
 import event.auth.signIn.SignInFormEvent;
 import listener.auth.signIn.SignInFormListener;
@@ -18,7 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.User;
 
-public class SignInCenterFXMLController implements Initializable {
+public class SignInCenterFXMLController extends FXMLController implements Initializable {
 
     SignInFormListener listener;
 

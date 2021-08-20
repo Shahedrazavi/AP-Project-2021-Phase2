@@ -1,13 +1,14 @@
 package ui.auth;
 
 import javafx.fxml.Initializable;
+import ui.FXMLController;
 import ui.GraphicalAgent;
 import model.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SignInPageFXMLController implements Initializable {
+public class SignInPageFXMLController extends FXMLController implements Initializable {
 
     private GraphicalAgent graphicalAgent = GraphicalAgent.getInstance();
 

@@ -1,4 +1,6 @@
 package ui.component.profileHeader.ui;
 
-public class ProfileHeaderFXMLController {
+import ui.FXMLController;
+
+public class ProfileHeaderFXMLController extends FXMLController {
 }

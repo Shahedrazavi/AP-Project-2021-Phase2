@@ -4,12 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import ui.FXMLController;
 import ui.GraphicalAgent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BackButtonFXMLController implements Initializable {
+public class BackButtonFXMLController extends FXMLController implements Initializable {
 
     private GraphicalAgent graphicalAgent = GraphicalAgent.getInstance();
 

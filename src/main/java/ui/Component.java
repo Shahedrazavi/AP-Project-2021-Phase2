@@ -10,19 +10,21 @@ import java.net.URL;
 
 public class Component {
     protected FXMLController fxmlController;
-    protected Scene scene;
+    protected Parent root;
     protected Component parent;
 
     public Component(String fxmlName) {
         URL url = getClass().getResource(Config.getConfig("fxmls").getProperty(fxmlName));
 //        System.out.println(url);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
-
+        System.out.println(fxmlLoader);
         try {
-            scene = new Scene(fxmlLoader.load());
+            root = fxmlLoader.load();
+//            System.out.println(root!=null);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        assert root!=null;
 
         fxmlController = fxmlLoader.getController();
     }
@@ -31,11 +33,17 @@ public class Component {
         return fxmlController;
     }
 
-    public Scene getScene() {
-        return scene;
+    public Parent getRoot() {
+        return root;
+    }
+
+    public Component getParent() {
+        return parent;
     }
 
     public void setParent(Component parent){
         this.parent = parent;
     }
+
+    public void initialize(){}
 }

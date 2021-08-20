@@ -1,5 +1,6 @@
 package ui.sidebar;
 
+import ui.FXMLController;
 import ui.mainView.MainViewFXMLController;
 import listener.sidebar.SidebarListener;
 import event.StringEvent;
@@ -12,7 +13,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class SidebarFXMLController implements Initializable {
+public class SidebarFXMLController extends FXMLController implements Initializable {
 
     private Sidebar sidebar;
 

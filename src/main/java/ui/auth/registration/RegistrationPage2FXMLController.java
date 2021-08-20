@@ -1,5 +1,6 @@
 package ui.auth.registration;
 
+import ui.FXMLController;
 import ui.auth.SignUpPageFXMLController;
 import event.auth.registration.RegistrationFormEvent;
 import listener.auth.registration.RegistrationFormListener2;
@@ -14,11 +15,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class RegistrationPage2FXMLController implements Initializable {
+public class RegistrationPage2FXMLController extends FXMLController implements Initializable {
 
     private RegistrationFormListener2 listener;
 
-    private SignUpPageFXMLController parentPageFXMLController;
+    private RegistrationPage2 component;
 
     private RegistrationFormEvent primaryEvent;
 
@@ -67,8 +68,8 @@ public class RegistrationPage2FXMLController implements Initializable {
         this.primaryEvent = primaryEvent;
     }
 
-    public void setParentPageFXMLController(SignUpPageFXMLController parentPageFXMLController) {
-        this.parentPageFXMLController = parentPageFXMLController;
+    public void setComponent(RegistrationPage2 component) {
+        this.component = component;
     }
 
     @FXML
@@ -85,7 +86,7 @@ public class RegistrationPage2FXMLController implements Initializable {
     }
 
     public void backToOpeningPage(){
-        parentPageFXMLController.backToOpeningPage();
+        ((SignUpPageFXMLController)component.getParent().getFxmlController()).backToOpeningPage();
     }
 
 }

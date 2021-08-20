@@ -1,5 +1,6 @@
 package ui.mainView;
 
+import ui.FXMLController;
 import ui.sidebar.SidebarFXMLController;
 import javafx.fxml.Initializable;
 import ui.GraphicalAgent;
@@ -7,7 +8,7 @@ import ui.GraphicalAgent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainViewFXMLController implements Initializable {
+public class MainViewFXMLController extends FXMLController implements Initializable {
 
     private GraphicalAgent graphicalAgent = GraphicalAgent.getInstance();
 

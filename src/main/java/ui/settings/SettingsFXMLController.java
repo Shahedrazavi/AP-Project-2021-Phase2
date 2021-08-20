@@ -1,5 +1,6 @@
 package ui.settings;
 
+import ui.FXMLController;
 import ui.mainView.CenterContent;
 import ui.mainView.CenterContentFXMLController;
 import ui.mainView.MainViewFXMLController;
@@ -22,7 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class SettingsFXMLController implements Initializable, CenterContentFXMLController {
+public class SettingsFXMLController extends FXMLController implements Initializable, CenterContentFXMLController {
 
     private CenterContent centerContent;
 

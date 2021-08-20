@@ -21,8 +21,6 @@ public class GraphicalAgent {
     private Stage stage;
     private Scene scene;
 
-
-
     public static GraphicalAgent getInstance(){
         if (instance==null){
             instance = new GraphicalAgent();

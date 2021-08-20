@@ -9,8 +9,9 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import ui.FXMLController;
 
-public class ListViewerFXMLController implements Initializable {
+public class ListViewerFXMLController extends FXMLController implements Initializable {
 
     @FXML
     private AnchorPane componentPane;

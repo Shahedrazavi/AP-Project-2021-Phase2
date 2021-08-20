@@ -1,5 +1,6 @@
 package ui.component.tweetComponent.ui;
 
+import ui.FXMLController;
 import ui.component.tweetComponent.event.TweetEvent;
 import ui.component.tweetComponent.listener.TweetComponentListener;
 import ui.component.tweetComponent.logic.TweetComponentLogic;
@@ -15,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class TweetComponentFXMLController implements Initializable {
+public class TweetComponentFXMLController extends FXMLController implements Initializable {
 
     private TweetComponentListener listener;
 
