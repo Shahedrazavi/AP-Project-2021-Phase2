@@ -1,7 +1,7 @@
 package ui.component.tweetComponent;
 
-import ui.component.tweetComponent.logic.TweetComponentLogic;
-import ui.component.tweetComponent.ui.TweetComponentFXMLController;
+
+import controller.component.tweetComponent.TweetComponentLogic;
 import ui.component.tweetViewer.TweetViewer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;

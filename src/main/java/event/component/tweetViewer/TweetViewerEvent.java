@@ -1,4 +1,4 @@
-package ui.component.tweetViewer.event;
+package event.component.tweetViewer;
 
 import event.StringEvent;
 

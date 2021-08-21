@@ -1,4 +1,4 @@
-package ui.component.listViewer.ui;
+package ui.component.listViewer;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;

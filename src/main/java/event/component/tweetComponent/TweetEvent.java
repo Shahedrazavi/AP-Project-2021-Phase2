@@ -1,4 +1,4 @@
-package ui.component.tweetComponent.event;
+package event.component.tweetComponent;
 
 import event.StringEvent;
 

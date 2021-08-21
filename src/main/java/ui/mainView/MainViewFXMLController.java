@@ -1,5 +1,7 @@
 package ui.mainView;
 
+import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 import ui.FXMLController;
 import ui.sidebar.SidebarFXMLController;
 import javafx.fxml.Initializable;
@@ -10,21 +12,35 @@ import java.util.ResourceBundle;
 
 public class MainViewFXMLController extends FXMLController implements Initializable {
 
-    private GraphicalAgent graphicalAgent = GraphicalAgent.getInstance();
+    private MainPage page;
 
-    private SidebarFXMLController sidebarFXMLController;
+    @FXML
+    private AnchorPane sideBarSection;
 
-    private CenterContentFXMLController centerContentFXMLController;
+    @FXML
+    private AnchorPane contentSection;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void setSidebarFXMLController(SidebarFXMLController sidebarFXMLController) {
-        this.sidebarFXMLController = sidebarFXMLController;
+    public void setPage(MainPage page) {
+        this.page = page;
     }
 
-    public void setCenterContentFXMLController(CenterContentFXMLController centerContentFXMLController) {
-        this.centerContentFXMLController = centerContentFXMLController;
+    @Override
+    public void makeContents() {
+        setSideBarSection();
+        setContentSection();
     }
+
+    public void setSideBarSection(){
+        sideBarSection.getChildren().add(page.getSidebar().getRoot());
+    }
+
+    public void setContentSection(){
+        contentSection.getChildren().clear();
+        contentSection.getChildren().add(page.getCenterComp().getRoot());
+    }
+
 }

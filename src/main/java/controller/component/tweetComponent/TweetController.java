@@ -1,4 +1,4 @@
-package ui.component.tweetComponent.controller;
+package controller.component.tweetComponent;
 
 import controller.Controller;
 import model.ID;

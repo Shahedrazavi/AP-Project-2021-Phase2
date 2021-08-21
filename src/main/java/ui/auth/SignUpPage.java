@@ -4,7 +4,7 @@ import ui.Component;
 import ui.Page;
 import ui.auth.registration.RegistrationPage1;
 import ui.auth.registration.RegistrationPage2;
-import ui.component.backButton.ui.BackButton;
+import ui.component.backButton.BackButton;
 
 public class SignUpPage extends Page {
     private Component backButton;

@@ -13,10 +13,10 @@ public class SettingsListener {
 
     public void eventOccurred(SettingsStringEvent event) {
         if (event.getCommand().equals("delete")) {
-            logic.deleteAcc(event.getUser());
+            logic.deleteAcc(event);
         }
         if (event.getCommand().equals("deactivate")) {
-            logic.changeActivate(event.getUser());
+            logic.changeActivate(event);
         }
     }
 }

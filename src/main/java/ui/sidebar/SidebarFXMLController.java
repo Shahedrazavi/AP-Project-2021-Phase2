@@ -1,7 +1,6 @@
 package ui.sidebar;
 
 import ui.FXMLController;
-import ui.mainView.MainViewFXMLController;
 import listener.sidebar.SidebarListener;
 import event.StringEvent;
 import javafx.event.ActionEvent;
@@ -15,14 +14,9 @@ import javafx.scene.control.Button;
 
 public class SidebarFXMLController extends FXMLController implements Initializable {
 
-    private Sidebar sidebar;
-
-    private MainViewFXMLController parentFXMLController;
-
     private SidebarListener listener;
 
-    @FXML
-    private Button bookmarksButton;
+    private Sidebar component;
 
     @FXML
     private Button timelineButton;
@@ -51,22 +45,25 @@ public class SidebarFXMLController extends FXMLController implements Initializab
     @FXML
     private Button tweetButton;
 
+    @FXML
+    private Button backButton;
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         listener = new SidebarListener();
     }
 
-    public void hideButtons(){
-        if(!sidebar.getUser().isActive()){
-            bookmarksButton.setDisable(true);
+    public void hideOrUnhideButtons(){
+        if(!component.getLoggedInUser().isActive()){
             timelineButton.setDisable(true);
             tweetButton.setDisable(true);
         }
-    }
-
-    @FXML
-    void bookmarksPressed(ActionEvent event) {
-        listener.eventOccurred(new StringEvent(this, "bookmarks"));
+        else {
+            timelineButton.setDisable(false);
+            tweetButton.setDisable(false);
+        }
     }
 
     @FXML
@@ -114,11 +111,12 @@ public class SidebarFXMLController extends FXMLController implements Initializab
         listener.eventOccurred(new StringEvent(this, "tweet"));
     }
 
-    public void setParentFXMLController(MainViewFXMLController parentFXMLController) {
-        this.parentFXMLController = parentFXMLController;
+    @FXML
+    void backPressed(ActionEvent event) {
+        listener.eventOccurred(new StringEvent(this, "back"));
     }
 
-    public void setSidebar(Sidebar sidebar) {
-        this.sidebar = sidebar;
+    public void setComponent(Sidebar component) {
+        this.component = component;
     }
 }

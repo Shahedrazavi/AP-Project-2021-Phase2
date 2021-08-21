@@ -2,7 +2,7 @@ package ui.auth.signIn;
 
 import ui.Component;
 import ui.auth.SignInPage;
-import ui.component.backButton.ui.BackButton;
+import ui.component.backButton.BackButton;
 
 public class SignInCenter extends Component {
     private Component backButton;

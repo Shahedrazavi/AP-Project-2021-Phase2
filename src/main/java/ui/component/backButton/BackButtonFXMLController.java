@@ -1,4 +1,4 @@
-package ui.component.backButton.ui;
+package ui.component.backButton;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

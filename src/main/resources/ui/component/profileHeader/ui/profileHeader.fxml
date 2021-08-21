@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.component.profileHeader.ui.ProfileHeaderFXMLController">
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.component.profileHeader.ProfileHeaderFXMLController">
    <children>
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="60.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="59.0" layoutY="25.0" text="Following" />

@@ -1,7 +1,7 @@
-package ui.component.tweetViewer.listener;
+package listener.component.tweetViewer;
 
-import ui.component.tweetViewer.event.TweetViewerEvent;
-import ui.component.tweetViewer.logic.TweetViewerLogic;
+import controller.component.tweetViewer.TweetViewerLogic;
+import event.component.tweetViewer.TweetViewerEvent;
 
 public class TweetViewerListener {
     private TweetViewerLogic logic;

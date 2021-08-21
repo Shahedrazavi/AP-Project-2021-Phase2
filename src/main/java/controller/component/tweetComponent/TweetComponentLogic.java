@@ -1,7 +1,6 @@
-package ui.component.tweetComponent.logic;
+package controller.component.tweetComponent;
 
 import ui.component.tweetComponent.TweetComponent;
-import ui.component.tweetComponent.controller.TweetController;
 import model.Tweet;
 import model.User;
 

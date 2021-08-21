@@ -1,6 +1,7 @@
 package db;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import config.Config;
 import model.ID;
 import model.User;
 
@@ -9,8 +10,9 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class UserDB implements DBSet<User> {
-    public static final String lastIDPath = "src/main/resources/db/userDB/lastID.txt";
-    public static final String dbPath = "src/main/resources/db/userDB/db.txt";
+    private static Config config = Config.getConfig("db");
+    public static final String lastIDPath = config.getProperty("user")+config.getProperty("lastID");
+    public static final String dbPath = config.getProperty("user")+config.getProperty("db");
 
     @Override
     public ID getLastID() {

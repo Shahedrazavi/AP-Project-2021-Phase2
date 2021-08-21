@@ -1,8 +1,10 @@
 package ui.settings;
 
+import config.Config;
 import ui.FXMLController;
 import ui.mainView.CenterContent;
 import ui.mainView.CenterContentFXMLController;
+import ui.mainView.MainPage;
 import ui.mainView.MainViewFXMLController;
 import event.settings.ChangePassEvent;
 import event.settings.ComboBoxEvent;
@@ -22,10 +24,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import ui.sidebar.Sidebar;
 
-public class SettingsFXMLController extends FXMLController implements Initializable, CenterContentFXMLController {
-
-    private CenterContent centerContent;
+public class SettingsFXMLController extends FXMLController implements Initializable {
 
     private ComboBoxListener comboBoxListener;
 
@@ -33,7 +34,7 @@ public class SettingsFXMLController extends FXMLController implements Initializa
 
     private ChangePassListener changePassListener;
 
-    private MainViewFXMLController parentFXMLController;
+    private Settings component;
 
     @FXML
     private AnchorPane backButton;
@@ -91,11 +92,13 @@ public class SettingsFXMLController extends FXMLController implements Initializa
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        accountTypeBox.getItems().addAll("Public"
-                ,"Private");
-        lastSeenBox.getItems().addAll("Everyone can see",
-                "Only following can see",
-                "No one can see");
+        Config config = Config.getConfig("settings");
+
+        accountTypeBox.getItems().addAll(config.getProperty("public")
+                ,config.getProperty("private"));
+        lastSeenBox.getItems().addAll(config.getProperty("everyone"),
+                config.getProperty("follow"),
+                config.getProperty("no_one"));
 
         comboBoxListener = new ComboBoxListener();
         settingsListener = new SettingsListener();
@@ -108,19 +111,10 @@ public class SettingsFXMLController extends FXMLController implements Initializa
         return passErrorLabel;
     }
 
-    @Override
-    public void setParentFXMLController(MainViewFXMLController parentFXMLController) {
-        this.parentFXMLController = parentFXMLController;
-    }
-
-    public void setCenterContent(CenterContent centerContent) {
-        this.centerContent = centerContent;
-    }
-
     @FXML
     void changePassPressed(ActionEvent event) {
         changePassListener.eventOccurred(new ChangePassEvent(this,
-                centerContent.getUser(),
+                component.getLoggedInUser(),
                 currentPassBox.getText(),
                 newPassBox.getText()));
     }
@@ -129,7 +123,7 @@ public class SettingsFXMLController extends FXMLController implements Initializa
     void saveAccountTypePressed(ActionEvent event) {
         String selectedOption = accountTypeBox.getValue();
         comboBoxListener.eventOccurred(new ComboBoxEvent(this,
-                centerContent.getUser(),
+                component.getLoggedInUser(),
                 "changeAccountType",
                 selectedOption));
     }
@@ -138,22 +132,31 @@ public class SettingsFXMLController extends FXMLController implements Initializa
     void saveLastSeenPressed(ActionEvent event) {
         String selectedOption = lastSeenBox.getValue();
         comboBoxListener.eventOccurred(new ComboBoxEvent(this,
-                centerContent.getUser(),
+                component.getLoggedInUser(),
                 "changeLastSeen",
                 selectedOption));
     }
 
     @FXML
     void deactivatePressed(ActionEvent event) {
-        settingsListener.eventOccurred(new SettingsStringEvent(this, centerContent.getUser(), "deactivate"));
+        settingsListener.eventOccurred(new SettingsStringEvent(this, component.getLoggedInUser(), "deactivate"));
     }
 
     @FXML
     void deletePressed(ActionEvent event) {
-        settingsListener.eventOccurred(new SettingsStringEvent(this, centerContent.getUser(), "delete"));
-
+        settingsListener.eventOccurred(new SettingsStringEvent(this, component.getLoggedInUser(), "delete"));
     }
 
+    public void setComponent(Settings component) {
+        this.component = component;
+    }
 
+    public void deleteAndExit(){
+        ((MainPage)component.getParent()).deleteAndExit();
+    }
 
+    @Override
+    public void update() {
+        component.updateApp();
+    }
 }

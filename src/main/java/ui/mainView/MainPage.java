@@ -1,72 +1,58 @@
 package ui.mainView;
 
-import ui.profile.ProfileContent;
-import ui.settings.SettingsContent;
+import ui.Component;
+import ui.GraphicalAgent;
+import ui.profile.Profile;
+import ui.settings.Settings;
 import ui.sidebar.Sidebar;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import ui.Page;
 import model.User;
 
-import java.io.IOException;
 import java.util.Stack;
 
 public class MainPage extends Page {
 
-    private User loggedInUser;
+    private GraphicalAgent graphicalAgent = GraphicalAgent.getInstance();
 
-    private Stack<CenterContent> contentsHistory;
+    private Stack<Component> componentHistory;
 
-    private Sidebar sidebar;
+    private Component sidebar;
 
-    private MainViewFXMLController mainViewFXMLController;
+    private Component centerComp;
 
-    private BorderPane borderPane;
-
-
-    public MainPage(User user, String fxmlName) {
+    public MainPage(User loggedInUser, String fxmlName) {
         super(fxmlName);
-        loggedInUser = user;
+        this.loggedInUser = loggedInUser;
         initialize();
     }
 
 
     public void initialize() {
-        FXMLLoader mainFXMLLoader = new FXMLLoader();
-        mainFXMLLoader.setLocation(getClass().getResource("./ui/mainView.fxml"));
-
-        borderPane = null;
-        try {
-            borderPane = mainFXMLLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        assert borderPane != null;
-        scene = new Scene(borderPane);
-
-        mainViewFXMLController = mainFXMLLoader.getController();
-
-        setSidebar();
-        goToSettingsPage();
+        MainViewFXMLController controller= (MainViewFXMLController)fxmlController;
+        sidebar = new Sidebar("sidebar",this, loggedInUser);
+        centerComp = new Settings("settings",this, loggedInUser);
+        controller.setPage(this);
+        controller.makeContents();
     }
 
-    public Stack<CenterContent> getContentsHistory() {
-        return contentsHistory;
+    public Component getSidebar() {
+        return sidebar;
     }
 
-    public void setSidebar() {
-        sidebar = new Sidebar(this, loggedInUser);
-        sidebar.initialize(borderPane, mainViewFXMLController);
+    public Component getCenterComp() {
+        return centerComp;
     }
 
-    public void goToSettingsPage() {
-
-        SettingsContent content = new SettingsContent(loggedInUser);
-        content.initialize(borderPane, mainViewFXMLController);
-
+    public Stack<Component> getComponentHistory() {
+        return componentHistory;
     }
+
+//    public void goToSettingsPage() {
+//
+//        SettingsContent content = new SettingsContent(loggedInUser);
+//        content.initialize(borderPane, mainViewFXMLController);
+//
+//    }
 
     public void goToProfile(User user) {
         if (user.equals(loggedInUser)) {
@@ -82,26 +68,25 @@ public class MainPage extends Page {
     }
 
     private void goToSelfProfilePage() {
-        ProfileContent content = new ProfileContent(this, loggedInUser);
+        Profile content = new Profile("profile",this, loggedInUser);
     }
 
-//    public void setCenterContent(FXMLLoader loader , BorderPane borderPane , MainViewFXMLController parentFXMLController){
-//
-//
-//        CenterContentFXMLController centerContentFXMLController = loader.getController();
-//        parentFXMLController.setCenterContentFXMLController(centerContentFXMLController);
-//        centerContentFXMLController.setParentFXMLController(parent FXMLController);
-//
-//    }
+    public void deleteAndExit(){
+        graphicalAgent.goToOpeningPage();
+    }
 
 
     public void updateAll() {
 
         sidebar.update();
-        for (CenterContent content : contentsHistory) {
-            content.update();
+        for (Component component : componentHistory) {
+            component.update();
         }
     }
 
-
+    @Override
+    public void updateApp() {
+        sidebar.update();
+        centerComp.update();
+    }
 }

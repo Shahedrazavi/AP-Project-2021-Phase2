@@ -1,4 +1,4 @@
-package ui.component.profileHeader.ui;
+package ui.component.profileHeader;
 
 import ui.FXMLController;
 

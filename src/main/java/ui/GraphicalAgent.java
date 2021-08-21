@@ -15,7 +15,6 @@ import java.util.Stack;
 public class GraphicalAgent {
     private static GraphicalAgent instance;
 
-    private User loggedInUser;
     private Stack<Scene> sceneStack;
 
     private Stage stage;
@@ -63,12 +62,15 @@ public class GraphicalAgent {
     }
 
     public void startMainApp(User user){
-        System.out.println("well done");
-        this.loggedInUser = user;
         MainPage mainPage = new MainPage(user,"main");
         sceneStack.pop();
         scene = mainPage.getScene();
+        sceneStack.add(scene);
         stage.setScene(scene);
+    }
+
+    public void removeLastScene(){
+        sceneStack.pop();
     }
 
 }

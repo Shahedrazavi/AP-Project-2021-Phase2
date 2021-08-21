@@ -21,9 +21,6 @@ public class SidebarListener implements StringListener {
         if (event.getCommand().equals("messages")){
 
         }
-        if (event.getCommand().equals("bookmarks")){
-
-        }
         if (event.getCommand().equals("profile")){
 
         }
@@ -34,6 +31,9 @@ public class SidebarListener implements StringListener {
 
         }
         if (event.getCommand().equals("tweet")){
+
+        }
+        if (event.getCommand().equals("back")){
 
         }
     }

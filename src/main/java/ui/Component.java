@@ -1,17 +1,20 @@
 package ui;
 
 import config.Config;
+import db.Updatable;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+import model.User;
 
 import java.io.IOException;
 import java.net.URL;
 
-public class Component {
+public class Component implements Updatable {
     protected FXMLController fxmlController;
     protected Parent root;
     protected Component parent;
+
+    protected User loggedInUser;
 
     public Component(String fxmlName) {
         URL url = getClass().getResource(Config.getConfig("fxmls").getProperty(fxmlName));
@@ -41,9 +44,24 @@ public class Component {
         return parent;
     }
 
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(User loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
     public void setParent(Component parent){
         this.parent = parent;
     }
 
     public void initialize(){}
+
+    public void update(){
+    }
+
+    public void updateApp(){
+        parent.updateApp();
+    }
 }

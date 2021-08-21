@@ -1,9 +1,9 @@
-package ui.component.tweetComponent.ui;
+package ui.component.tweetComponent;
 
+import controller.component.tweetComponent.TweetComponentLogic;
+import event.component.tweetComponent.TweetEvent;
+import listener.component.tweetComponent.TweetComponentListener;
 import ui.FXMLController;
-import ui.component.tweetComponent.event.TweetEvent;
-import ui.component.tweetComponent.listener.TweetComponentListener;
-import ui.component.tweetComponent.logic.TweetComponentLogic;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 
