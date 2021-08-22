@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder;
 import config.Config;
 import model.ID;
 import model.Tweet;
+import util.Logger;
 
 import java.io.*;
 import java.util.LinkedList;
@@ -11,8 +12,9 @@ import java.util.Scanner;
 
 public class TweetDB implements DBSet<Tweet>{
     private static Config config = Config.getConfig("db");
-    public static final String lastIDPath = config.getProperty("tweet")+config.getProperty("lastID");
-    public static final String dbPath = config.getProperty("tweet")+config.getProperty("db");
+    private final static String name = "tweet";
+    public static final String lastIDPath = config.getProperty(name)+config.getProperty("lastID");
+    public static final String dbPath = config.getProperty(name)+config.getProperty("db");
 
     @Override
     public ID getLastID() {
@@ -21,10 +23,12 @@ public class TweetDB implements DBSet<Tweet>{
         if (!file.exists()){
             try {
                 PrintStream printStream = new PrintStream(file);
+                Logger.getLogger().dbMakeFile(name);
                 printStream.println("0");
                 printStream.flush();
                 printStream.close();
             } catch (FileNotFoundException e) {
+                Logger.getLogger().dbError(name);
                 e.printStackTrace();
             }
         }
@@ -36,6 +40,7 @@ public class TweetDB implements DBSet<Tweet>{
 
             return new ID(Integer.parseInt(lastID));
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
         return null;
@@ -49,10 +54,12 @@ public class TweetDB implements DBSet<Tweet>{
         if (!file.exists()){
             try {
                 PrintStream printStream = new PrintStream(file);
+                Logger.getLogger().dbMakeFile(name);
                 printStream.println(lastIDNum);
                 printStream.flush();
                 printStream.close();
             } catch (FileNotFoundException e) {
+                Logger.getLogger().dbError(name);
                 e.printStackTrace();
             }
         }
@@ -64,6 +71,7 @@ public class TweetDB implements DBSet<Tweet>{
             lastIDNum = Integer.parseInt(lastID);
 
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
 
@@ -75,6 +83,7 @@ public class TweetDB implements DBSet<Tweet>{
             printStream.flush();
             printStream.close();
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
     }
@@ -86,6 +95,7 @@ public class TweetDB implements DBSet<Tweet>{
         if (!file.exists()){
             try {
                 file.createNewFile();
+                Logger.getLogger().dbMakeFile(name);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -101,6 +111,7 @@ public class TweetDB implements DBSet<Tweet>{
                 }
             }
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
 
@@ -115,6 +126,7 @@ public class TweetDB implements DBSet<Tweet>{
         if (!file.exists()){
             try {
                 file.createNewFile();
+                Logger.getLogger().dbMakeFile(name);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -129,6 +141,7 @@ public class TweetDB implements DBSet<Tweet>{
             }
             scanner.close();
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
         return tweets;
@@ -141,6 +154,7 @@ public class TweetDB implements DBSet<Tweet>{
         if (!file.exists()){
             try {
                 file.createNewFile();
+                Logger.getLogger().dbMakeFile(name);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -155,6 +169,7 @@ public class TweetDB implements DBSet<Tweet>{
             printStream.flush();
             printStream.close();
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
 
@@ -167,6 +182,7 @@ public class TweetDB implements DBSet<Tweet>{
         if (!file.exists()){
             try {
                 file.createNewFile();
+                Logger.getLogger().dbMakeFile(name);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -185,6 +201,7 @@ public class TweetDB implements DBSet<Tweet>{
         if (!file.exists()) {
             try {
                 file.createNewFile();
+                Logger.getLogger().dbMakeFile(name);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -211,6 +228,7 @@ public class TweetDB implements DBSet<Tweet>{
             printStream.flush();
             printStream.close();
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
     }

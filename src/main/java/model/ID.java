@@ -21,4 +21,9 @@ public class ID {
     public int hashCode() {
         return Objects.hash(idNumber);
     }
+
+    @Override
+    public String toString() {
+        return Integer.toString(idNumber);
+    }
 }

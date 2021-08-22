@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class SidebarFXMLController extends FXMLController implements Initializable {
+public class SidebarFXMLController extends FXMLController {
 
     private SidebarListener listener;
 
@@ -118,5 +118,9 @@ public class SidebarFXMLController extends FXMLController implements Initializab
 
     public void setComponent(Sidebar component) {
         this.component = component;
+    }
+
+    public Sidebar getComponent() {
+        return component;
     }
 }

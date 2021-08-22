@@ -2,6 +2,7 @@ package ui;
 
 import config.Config;
 import javafx.stage.Stage;
+import util.Logger;
 
 public class MainStage extends Stage {
     public MainStage() {
@@ -11,6 +12,11 @@ public class MainStage extends Stage {
         setHeight(config.getProperty(Integer.class, "height"));
         setTitle(config.getProperty("name"));
         setResizable(false);
+        setOnCloseRequest(windowEvent -> {
+            windowEvent.consume();
+            Logger.getLogger().exit();
+            this.close();
+        });
     }
 
 }

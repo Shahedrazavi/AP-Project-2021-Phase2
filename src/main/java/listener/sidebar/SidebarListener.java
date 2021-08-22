@@ -2,12 +2,15 @@ package listener.sidebar;
 
 import event.StringEvent;
 import listener.StringListener;
+import ui.settings.SettingsFXMLController;
+import ui.sidebar.SidebarFXMLController;
 
 public class SidebarListener implements StringListener {
 
     @Override
     public void eventOccurred(StringEvent event) {
         if (event.getCommand().equals("timeline")){
+
         }
         if (event.getCommand().equals("explore")){
 
@@ -22,19 +25,19 @@ public class SidebarListener implements StringListener {
 
         }
         if (event.getCommand().equals("profile")){
-
+            ((SidebarFXMLController)event.getSource()).getComponent().goToSelfProfile();
         }
         if (event.getCommand().equals("settings")){
-
+            ((SidebarFXMLController)event.getSource()).getComponent().goToSettings();
         }
-        if (event.getCommand().equals("logOut")){
-
+        if (event.getCommand().equals("logout")){
+            ((SidebarFXMLController)event.getSource()).getComponent().exitToHomePage();
         }
         if (event.getCommand().equals("tweet")){
-
+            ((SidebarFXMLController)event.getSource()).getComponent().goToNewTweet();
         }
         if (event.getCommand().equals("back")){
-
+            ((SidebarFXMLController)event.getSource()).getComponent().goBack();
         }
     }
 }

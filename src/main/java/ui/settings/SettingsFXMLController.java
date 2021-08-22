@@ -2,10 +2,7 @@ package ui.settings;
 
 import config.Config;
 import ui.FXMLController;
-import ui.mainView.CenterContent;
-import ui.mainView.CenterContentFXMLController;
 import ui.mainView.MainPage;
-import ui.mainView.MainViewFXMLController;
 import event.settings.ChangePassEvent;
 import event.settings.ComboBoxEvent;
 import event.settings.SettingsStringEvent;
@@ -13,7 +10,6 @@ import listener.settings.ChangePassListener;
 import listener.settings.ComboBoxListener;
 import listener.settings.SettingsListener;
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,9 +20,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import ui.sidebar.Sidebar;
 
-public class SettingsFXMLController extends FXMLController implements Initializable {
+public class SettingsFXMLController extends FXMLController {
 
     private ComboBoxListener comboBoxListener;
 
@@ -152,7 +147,7 @@ public class SettingsFXMLController extends FXMLController implements Initializa
     }
 
     public void deleteAndExit(){
-        ((MainPage)component.getParent()).deleteAndExit();
+        ((MainPage)component.getParent()).exit();
     }
 
     @Override

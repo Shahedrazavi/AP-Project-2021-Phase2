@@ -3,6 +3,7 @@ package controller.auth;
 import event.auth.registration.RegistrationFormEvent;
 import controller.Controller;
 import model.User;
+import util.Logger;
 
 import java.time.LocalDate;
 
@@ -14,6 +15,7 @@ public class AuthController extends Controller {
                 formEvent.getProfileName(),formEvent.getFirstName(),formEvent.getLastName(),
                 formEvent.getEmail(),formEvent.getPhoneNumber(),birthday);
         context.users.add(newUser);
+        Logger.getLogger().signUp(newUser.getUsername(),newUser.getId().toString());
     }
 
     public void registerWithoutBirthday(RegistrationFormEvent formEvent){
@@ -22,6 +24,7 @@ public class AuthController extends Controller {
                 formEvent.getProfileName(),formEvent.getFirstName(),formEvent.getLastName(),
                 formEvent.getEmail(),formEvent.getPhoneNumber());
         context.users.add(newUser);
+        Logger.getLogger().signUp(newUser.getUsername(),newUser.getId().toString());
     }
 
     public boolean isUsernameAvailable(String username) {

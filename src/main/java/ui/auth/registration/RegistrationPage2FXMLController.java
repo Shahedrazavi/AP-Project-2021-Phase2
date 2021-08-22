@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class RegistrationPage2FXMLController extends FXMLController implements Initializable {
+public class RegistrationPage2FXMLController extends FXMLController {
 
     private RegistrationFormListener2 listener;
 

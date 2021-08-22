@@ -1,5 +1,6 @@
 package controller.component.tweetComponent;
 
+import model.ID;
 import ui.component.tweetComponent.TweetComponent;
 import model.Tweet;
 import model.User;
@@ -8,7 +9,8 @@ public class TweetComponentLogic {
     private Tweet tweet;
     private User loggedInUser;
 
-    private TweetController controller;
+    private TweetController tweetController;
+    private UserController userController;
 
     private TweetComponent tweetComponent;
 
@@ -17,60 +19,61 @@ public class TweetComponentLogic {
         this.tweet = tweet;
         this.loggedInUser = loggedInUser;
 
-        controller = new TweetController(tweet, loggedInUser);
+        tweetController = new TweetController(tweet, loggedInUser);
+        userController = new UserController();
     }
 
     public void checkLike(){
-//        if (isLiked()){
-//            like();
-//        }
-//        if (!isLiked()){
-//            unlike();
-//        }
+        if (isLiked()){
+            like();
+        }
+        if (!isLiked()){
+            unlike();
+        }
     }
 
-//    public boolean isLiked(){
-//        return tweet.getLikes().contains(loggedInUser.getId());
-//    }
+    public boolean isLiked(){
+        return tweet.getLikes().contains(loggedInUser.getId());
+    }
 
     public void like(){
-        controller.like();
+        tweetController.like();
     }
 
     public void unlike(){
-        controller.unlike();
+        tweetController.unlike();
     }
 
-//    public boolean isReported(){
-//        return tweet.getReports().contains(loggedInUser.getId());
-//    }
+    public boolean isReported(){
+        return tweet.getReports().contains(loggedInUser.getId());
+    }
 
     public void report(){
-        controller.report();
+        tweetController.report();
     }
 
-//    public boolean isRetweeted(){
-//        return tweet.getRetweets().contains(loggedInUser.getId());
-//    }
+    public boolean isRetweeted(){
+        return tweetController.isRetweetedByLoggedUser();
+    }
 
-//    public void retweet(){
-//        controller.retweet();
-//    }
+    public void retweet(){
+        tweetController.retweet();
+    }
 
     public boolean isMuted(){
-        return controller.isMuted();
+        return tweetController.isMuted();
     }
 
     public void mute(){
-        controller.mute();
+        tweetController.mute();
     }
 
     public boolean isBlocked(){
-        return controller.isBlocked();
+        return tweetController.isBlocked();
     }
 
     public void block() {
-        controller.block();
+        tweetController.block();
     }
 
     public void save(){
@@ -89,10 +92,14 @@ public class TweetComponentLogic {
     }
 
     public void viewProfile(){
-        tweetComponent.goToProfile(controller.getTweetUser());
+        tweetComponent.goToProfile(tweetController.getTweetUser());
     }
 
     public void viewTweetPhoto(){
 
+    }
+
+    public String getUsername(ID id){
+        return userController.getUsername(id);
     }
 }

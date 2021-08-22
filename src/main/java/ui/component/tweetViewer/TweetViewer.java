@@ -1,6 +1,7 @@
 package ui.component.tweetViewer;
 
 import controller.component.tweetViewer.TweetViewerLogic;
+import ui.Component;
 import ui.mainView.MainPage;
 import ui.component.tweetComponent.TweetComponent;
 import javafx.fxml.FXMLLoader;
@@ -10,53 +11,60 @@ import model.User;
 
 import java.util.LinkedList;
 
-public class TweetViewer {
+public class TweetViewer extends Component {
     private LinkedList<Tweet> tweets;
+    private int index;
     private User loggedInUser;
-
-    private TweetViewerLogic logic;
-
-    private TweetViewerFXMLController tweetViewerFXMLController;
 
     private MainPage mainPage;
 
-    public TweetViewer(MainPage mainPage , LinkedList<Tweet> tweets , User loggedInUser) {
-        this.mainPage = mainPage;
+    public TweetViewer(String fxmlName, TVContainerComponent parent, LinkedList<Tweet> tweets , User loggedInUser , MainPage mainPage) {
+        super(fxmlName);
+        setParent(parent);
+        setLoggedInUser(loggedInUser);
+        this.index = 0;
         this.tweets = tweets;
         this.loggedInUser = loggedInUser;
+        this.mainPage = mainPage;
+        initialize();
     }
 
-    public void initialize(AnchorPane anchorPane){
-        setupLogic();
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("component/tweetViewer/ui/tweetViewer.fxml"));
-
-        tweetViewerFXMLController = loader.getController();
-        tweetViewerFXMLController.initializeLogic(logic);
-        tweetViewerFXMLController.initializeListener();
-
-        fillComponent();
+    @Override
+    public void initialize() {
+        TweetViewerFXMLController controller = (TweetViewerFXMLController) fxmlController;
+        controller.setComponent(this);
+        fillComponent(controller);
     }
 
-    public void setupLogic(){
-        logic = new TweetViewerLogic();
-    }
-
-    public void fillComponent(){
+    public void fillComponent(TweetViewerFXMLController controller){
         if (tweets.isEmpty()){
-            tweetViewerFXMLController.disableButtons();
-            tweetViewerFXMLController.showEmptyLabel();
+            controller.disableButtons();
+            controller.showEmptyLabel();
         }
         else {
-            showTweetComponent();
+            index = tweets.size()-1;
+            showTweetComponent(controller);
         }
     }
 
-    public void showTweetComponent(){
-        Tweet showingTweet = tweets.get(0);
-        TweetComponent tweetComponent = new TweetComponent(this,showingTweet,loggedInUser);
+    public void showTweetComponent(TweetViewerFXMLController controller){
+        if (index==0){
+            controller.disableNext();
+        }
+        if (index==tweets.size()-1){
+            controller.disablePrevious();
+        }
+        Tweet showingTweet = tweets.get(index);
+        TweetComponent tweetComponent = new TweetComponent("tweetComponent",this,showingTweet,loggedInUser);
+        controller.setComponentPane(tweetComponent);
+    }
 
+    public void goToNext(){
+        index--;
+    }
+
+    public void goToPrevious(){
+        index++;
     }
 
     public void goToProfile(User user){

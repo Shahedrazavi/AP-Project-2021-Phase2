@@ -10,7 +10,7 @@ import ui.GraphicalAgent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainViewFXMLController extends FXMLController implements Initializable {
+public class MainViewFXMLController extends FXMLController {
 
     private MainPage page;
 

@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.User;
 
-public class SignInCenterFXMLController extends FXMLController implements Initializable {
+public class SignInCenterFXMLController extends FXMLController{
 
     SignInFormListener listener;
 

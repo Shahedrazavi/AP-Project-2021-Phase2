@@ -149,6 +149,34 @@ public class User extends Model {
         return likedTweets;
     }
 
+    public ID getAvatar() {
+        return avatar;
+    }
+
+    public boolean isBirthdaySet() {
+        return isBirthdaySet;
+    }
+
+    public boolean isPublic() {
+        return isPublic;
+    }
+
+    public LastSeenType getLastSeenType() {
+        return lastSeenType;
+    }
+
+    public LinkedList<ID> getTweets() {
+        return tweets;
+    }
+
+    public LinkedList<ID> getChatLinks() {
+        return chatLinks;
+    }
+
+    public LinkedList<ID> getNotifs() {
+        return notifs;
+    }
+
     public String getUsername() {
         return username;
     }

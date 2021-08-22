@@ -3,6 +3,7 @@ package controller.auth.signIn;
 import event.auth.signIn.SignInFormEvent;
 import ui.auth.signIn.SignInCenterFXMLController;
 import model.User;
+import util.Logger;
 
 public class SignInPageLogic {
     private SignInController signInController;
@@ -54,6 +55,7 @@ public class SignInPageLogic {
         User loggedInUser = signInController.getUser(formEvent.getUsername());
 
         SignInCenterFXMLController controller = (SignInCenterFXMLController) formEvent.getSource();
+        Logger.getLogger().signIn(loggedInUser.getUsername(),loggedInUser.getId().toString());
         controller.goToHomePage(loggedInUser);
     }
 }

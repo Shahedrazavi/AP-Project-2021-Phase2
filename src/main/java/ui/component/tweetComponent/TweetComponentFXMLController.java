@@ -3,6 +3,7 @@ package ui.component.tweetComponent;
 import controller.component.tweetComponent.TweetComponentLogic;
 import event.component.tweetComponent.TweetEvent;
 import listener.component.tweetComponent.TweetComponentListener;
+import model.Tweet;
 import ui.FXMLController;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -16,11 +17,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class TweetComponentFXMLController extends FXMLController implements Initializable {
+public class TweetComponentFXMLController extends FXMLController{
 
     private TweetComponentListener listener;
 
     private TweetComponentLogic logic;
+
+    private TweetComponent component;
 
     @FXML
     private ImageView profilePhoto;
@@ -76,29 +79,33 @@ public class TweetComponentFXMLController extends FXMLController implements Init
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        profilePhoto.setPickOnBounds(true); // allows click on transparent areas
-        profilePhoto.setOnMouseClicked((MouseEvent e) -> {
-            System.out.println("Clicked!"); // change functionality
-            viewTweetPhotoPressed();
-        });
-
-
-
+//        profilePhoto.setPickOnBounds(true); // allows click on transparent areas
+//        profilePhoto.setOnMouseClicked((MouseEvent e) -> {
+//            System.out.println("Clicked!"); // change functionality
+//            viewTweetPhotoPressed();
+//        });
+    }
+    public void setTweetInfo(){
+        Tweet tweet = component.getTweet();
+        usernameLabel.setText(logic.getUsername(tweet.getWriterID()));
+        tweetTextLabel.setText(tweet.getText());
+        if(tweet.getImageID()!=null){
+        }
     }
 
-    public void initializeButtons(){
+    public void configButtons(){
         if (logic.isMuted()){
             muteButton.setDisable(true);
         }
         if (logic.isBlocked()){
             blockButton.setDisable(true);
         }
-//        if (logic.isReported()){
-//            reportButton.setDisable(true);
-//        }
-//        if (logic.isRetweeted()){
-//            retweetButton.setDisable(true);
-//        }
+        if (logic.isReported()){
+            reportButton.setDisable(true);
+        }
+        if (logic.isRetweeted()){
+            retweetButton.setDisable(true);
+        }
     }
 
     public void initializeLogic(TweetComponentLogic logic){
@@ -159,7 +166,13 @@ public class TweetComponentFXMLController extends FXMLController implements Init
         listener.eventOccurred(new TweetEvent(this,"viewProfilePressed"));
     }
 
-    void viewTweetPhotoPressed(){
-        listener.eventOccurred(new TweetEvent(this,"viewTweetPhotoPressed"));
+
+
+    public void setComponent(TweetComponent component) {
+        this.component = component;
     }
+
+    //    void viewTweetPhotoPressed(){
+//        listener.eventOccurred(new TweetEvent(this,"viewTweetPhotoPressed"));
+//    }
 }

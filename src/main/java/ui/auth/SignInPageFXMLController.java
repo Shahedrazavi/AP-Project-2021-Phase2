@@ -10,7 +10,7 @@ import model.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SignInPageFXMLController extends FXMLController implements Initializable {
+public class SignInPageFXMLController extends FXMLController {
 
     private GraphicalAgent graphicalAgent = GraphicalAgent.getInstance();
 

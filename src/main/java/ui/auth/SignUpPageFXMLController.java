@@ -12,7 +12,7 @@ import ui.GraphicalAgent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SignUpPageFXMLController extends FXMLController implements Initializable {
+public class SignUpPageFXMLController extends FXMLController {
 
     private GraphicalAgent graphicalAgent = GraphicalAgent.getInstance();
 

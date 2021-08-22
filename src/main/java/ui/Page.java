@@ -2,7 +2,7 @@ package ui;
 
 import javafx.scene.Scene;
 
-public class Page extends Component {
+public abstract class Page extends Component {
 
     protected Scene scene;
 

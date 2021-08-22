@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder;
 import config.Config;
 import model.ID;
 import model.User;
+import util.Logger;
 
 import java.io.*;
 import java.util.LinkedList;
@@ -11,8 +12,9 @@ import java.util.Scanner;
 
 public class UserDB implements DBSet<User> {
     private static Config config = Config.getConfig("db");
-    public static final String lastIDPath = config.getProperty("user")+config.getProperty("lastID");
-    public static final String dbPath = config.getProperty("user")+config.getProperty("db");
+    private final static String name = "user";
+    public static final String lastIDPath = config.getProperty(name)+config.getProperty("lastID");
+    public static final String dbPath = config.getProperty(name)+config.getProperty("db");
 
     @Override
     public ID getLastID() {
@@ -25,6 +27,7 @@ public class UserDB implements DBSet<User> {
                 printStream.flush();
                 printStream.close();
             } catch (FileNotFoundException e) {
+                Logger.getLogger().dbError(name);
                 e.printStackTrace();
             }
         }
@@ -36,6 +39,7 @@ public class UserDB implements DBSet<User> {
 
             return new ID(Integer.parseInt(lastID));
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
         return null;
@@ -53,6 +57,7 @@ public class UserDB implements DBSet<User> {
                 printStream.flush();
                 printStream.close();
             } catch (FileNotFoundException e) {
+                Logger.getLogger().dbError(name);
                 e.printStackTrace();
             }
         }
@@ -64,6 +69,7 @@ public class UserDB implements DBSet<User> {
             lastIDNum = Integer.parseInt(lastID);
 
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
 
@@ -75,6 +81,7 @@ public class UserDB implements DBSet<User> {
             printStream.flush();
             printStream.close();
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
     }
@@ -101,6 +108,7 @@ public class UserDB implements DBSet<User> {
                 }
             }
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
 
@@ -128,6 +136,7 @@ public class UserDB implements DBSet<User> {
                 }
             }
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
 
@@ -156,6 +165,7 @@ public class UserDB implements DBSet<User> {
             }
             scanner.close();
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
         return users;
@@ -182,6 +192,7 @@ public class UserDB implements DBSet<User> {
             printStream.flush();
             printStream.close();
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
 
@@ -238,6 +249,7 @@ public class UserDB implements DBSet<User> {
             printStream.flush();
             printStream.close();
         } catch (FileNotFoundException e) {
+            Logger.getLogger().dbError(name);
             e.printStackTrace();
         }
     }

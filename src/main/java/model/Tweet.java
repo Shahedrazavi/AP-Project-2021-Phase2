@@ -44,8 +44,48 @@ public class Tweet extends Model {
         this.parentTweetID = parentTweetID;
     }
 
+    public LinkedList<ID> getLikes() {
+        return likes;
+    }
+
+    public LinkedList<ID> getReports() {
+        return reports;
+    }
+
     public ID getWriterID() {
         return writerID;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public ID getImageID() {
+        return imageID;
+    }
+
+    public LocalDateTime getCreateTime() {
+        return createTime;
+    }
+
+    public LocalDateTime getRetweetTime() {
+        return retweetTime;
+    }
+
+    public ID getRetweeterID() {
+        return retweeterID;
+    }
+
+    public LinkedList<ID> getComments() {
+        return comments;
+    }
+
+    public ID getUpperTweetID() {
+        return upperTweetID;
+    }
+
+    public ID getParentTweetID() {
+        return parentTweetID;
     }
 
     public void addLike(ID id) {

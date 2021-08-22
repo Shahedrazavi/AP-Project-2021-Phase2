@@ -27,10 +27,10 @@ public class TweetComponentListener {
             logic.mute();
         }
         if (event.getCommand().equals("reportPressed")){
-            logic.block();
+            logic.report();
         }
         if (event.getCommand().equals("retweetPressed")){
-//            logic.retweet();
+            logic.retweet();
         }
         if (event.getCommand().equals("savePressed")){
             logic.save();

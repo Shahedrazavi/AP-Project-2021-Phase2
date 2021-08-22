@@ -9,7 +9,7 @@ import model.User;
 import java.io.IOException;
 import java.net.URL;
 
-public class Component implements Updatable {
+public abstract class Component implements Updatable {
     protected FXMLController fxmlController;
     protected Parent root;
     protected Component parent;

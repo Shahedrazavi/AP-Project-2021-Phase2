@@ -24,4 +24,25 @@ public class Sidebar extends Component {
     public void update() {
         ((SidebarFXMLController)fxmlController).hideOrUnhideButtons();
     }
+
+    public void exitToHomePage(){
+        ((MainPage)parent).exit();
+    }
+
+    public void goBack(){
+        ((MainPage)parent).goBack();
+    }
+
+    public void goToSelfProfile(){
+        ((MainPage)parent).goToSelfProfilePage();
+    }
+
+    public void goToSettings(){
+        ((MainPage)parent).goToSettingsPage();
+    }
+
+    public void goToNewTweet(){
+        ((MainPage)parent).goToNewTweetPage();
+    }
+
 }

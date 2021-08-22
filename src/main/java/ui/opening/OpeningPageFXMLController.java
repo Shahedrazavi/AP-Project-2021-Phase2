@@ -13,7 +13,7 @@ import listener.OpeningListener;
 import listener.StringListener;
 import ui.FXMLController;
 
-public class OpeningPageFXMLController extends FXMLController implements Initializable {
+public class OpeningPageFXMLController extends FXMLController {
 
     private StringListener openingListener;
     

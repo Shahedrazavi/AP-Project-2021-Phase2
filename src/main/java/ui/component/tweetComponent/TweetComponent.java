@@ -2,6 +2,7 @@ package ui.component.tweetComponent;
 
 
 import controller.component.tweetComponent.TweetComponentLogic;
+import ui.Component;
 import ui.component.tweetViewer.TweetViewer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -10,49 +11,36 @@ import model.User;
 
 import java.io.IOException;
 
-public class TweetComponent {
+public class TweetComponent extends Component {
     private Tweet tweet;
     private User loggedInUser;
     private TweetComponentLogic logic;
 
-    private TweetViewer tweetViewer;
-
-    public TweetComponent(TweetViewer tweetViewer,Tweet tweet , User loggedInUser) {
+    public TweetComponent(String fxmlName, TweetViewer parent, Tweet tweet , User loggedInUser) {
+        super(fxmlName);
+        setParent(parent);
+        setLoggedInUser(loggedInUser);
         this.tweet = tweet;
         this.loggedInUser = loggedInUser;
-        this.tweetViewer = tweetViewer;
+        this.logic = new TweetComponentLogic(this,tweet,loggedInUser);
+        initialize();
     }
 
-    public void initialize(AnchorPane anchorPane){
-        setupLogic();
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("component/tweetComponent/ui/tweetComponent.fxml"));
-
-        AnchorPane component = null;
-        try {
-            component = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assert component != null;
-
-        anchorPane.getChildren().add(component);
-
-        TweetComponentFXMLController tweetComponentFXMLController = loader.getController();
-        tweetComponentFXMLController.initializeLogic(logic);
-        tweetComponentFXMLController.initializeListener();
-        tweetComponentFXMLController.initializeButtons();
-
-
-    }
-
-    public void setupLogic(){
-        logic = new TweetComponentLogic(this,tweet,loggedInUser);
+    @Override
+    public void initialize() {
+        TweetComponentFXMLController controller = (TweetComponentFXMLController) fxmlController;
+        controller.setComponent(this);
+        controller.initializeLogic(logic);
+        controller.initializeListener();
+        controller.setTweetInfo();
+        controller.configButtons();
     }
 
     public void goToProfile(User user){
-        tweetViewer.goToProfile(user);
+        ((TweetViewer)parent).goToProfile(user);
     }
 
+    public Tweet getTweet() {
+        return tweet;
+    }
 }

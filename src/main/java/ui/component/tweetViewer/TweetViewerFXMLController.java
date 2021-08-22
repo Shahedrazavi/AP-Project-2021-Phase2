@@ -14,12 +14,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import ui.component.tweetComponent.TweetComponent;
 
-public class TweetViewerFXMLController extends FXMLController implements Initializable {
+public class TweetViewerFXMLController extends FXMLController{
 
     private TweetViewerLogic logic;
 
     private TweetViewerListener listener;
+
+    private TweetViewer component;
 
     @FXML
     private AnchorPane componentPane;
@@ -47,12 +50,24 @@ public class TweetViewerFXMLController extends FXMLController implements Initial
     }
 
     public void disableButtons(){
+        disableNext();
+        disablePrevious();
+    }
+
+    public void disablePrevious(){
         previousButton.setDisable(true);
-        previousButton.setDisable(true);
+    }
+
+    public void disableNext(){
+        nextButton.setDisable(true);
     }
 
     public void showEmptyLabel(){
         emptyLabel.setVisible(true);
+    }
+
+    public void hideEmptyLabel(){
+        emptyLabel.setVisible(false);
     }
 
     @FXML
@@ -63,5 +78,18 @@ public class TweetViewerFXMLController extends FXMLController implements Initial
     @FXML
     void previousPressed(ActionEvent event) {
         listener.EventOccurred(new TweetViewerEvent(this,"previousPressed"));
+    }
+
+    public void setComponent(TweetViewer component) {
+        this.component = component;
+    }
+
+    public TweetViewer getComponent() {
+        return component;
+    }
+
+    public void setComponentPane(TweetComponent tweetComponent) {
+        componentPane.getChildren().clear();
+        componentPane.getChildren().add(tweetComponent.getRoot());
     }
 }
