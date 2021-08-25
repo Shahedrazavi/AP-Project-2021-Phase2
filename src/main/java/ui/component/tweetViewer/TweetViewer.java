@@ -33,6 +33,8 @@ public class TweetViewer extends Component {
     public void initialize() {
         TweetViewerFXMLController controller = (TweetViewerFXMLController) fxmlController;
         controller.setComponent(this);
+        controller.initializeLogic(new TweetViewerLogic());
+        controller.initializeListener();
         fillComponent(controller);
     }
 
@@ -51,8 +53,14 @@ public class TweetViewer extends Component {
         if (index==0){
             controller.disableNext();
         }
+        else{
+            controller.enableNext();
+        }
         if (index==tweets.size()-1){
             controller.disablePrevious();
+        }
+        else {
+            controller.enablePrevious();
         }
         Tweet showingTweet = tweets.get(index);
         TweetComponent tweetComponent = new TweetComponent("tweetComponent",this,showingTweet,loggedInUser);
@@ -61,10 +69,13 @@ public class TweetViewer extends Component {
 
     public void goToNext(){
         index--;
+        showTweetComponent((TweetViewerFXMLController)fxmlController);
     }
 
     public void goToPrevious(){
         index++;
+        showTweetComponent((TweetViewerFXMLController)fxmlController);
+
     }
 
     public void goToProfile(User user){

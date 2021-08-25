@@ -55,3 +55,48 @@
 2021-08-22T05:55:34.874079400: NOTICE level: Application exited.
 2021-08-22T06:41:36.552910600: NOTICE level: Application Started.
 2021-08-22T06:41:49.690924700: NOTICE level: Application exited.
+2021-08-22T07:11:05.773390300: NOTICE level: Application Started.
+2021-08-22T07:11:20.097301: NOTICE level: User with username: "first" and ID: "2" logged in.
+2021-08-22T07:11:47.118769700: NOTICE level: Application exited.
+2021-08-24T18:42:46.065930400: NOTICE level: Application Started.
+2021-08-24T18:42:55.076521100: NOTICE level: User with username: "first" and ID: "2" logged in.
+2021-08-24T18:47:14.279249100: NOTICE level: Application Started.
+2021-08-24T18:47:21.393720: NOTICE level: User with username: "first" and ID: "2" logged in.
+2021-08-24T18:48:49.918483300: NOTICE level: Application exited.
+2021-08-24T18:49:20.512564800: NOTICE level: Application Started.
+2021-08-24T18:50:20.702079600: NOTICE level: User with username: "erfan" and ID: "1" created a new account.
+2021-08-24T18:51:43.444832700: NOTICE level: User with username: "sadat" and ID: "2" created a new account.
+2021-08-24T18:52:45.607725300: NOTICE level: User with username: "mojtaba" and ID: "3" created a new account.
+2021-08-24T18:53:20.190720400: NOTICE level: User with username: "mohammad" and ID: "4" created a new account.
+2021-08-24T18:53:43.591905200: NOTICE level: User with username: "reza" and ID: "5" created a new account.
+2021-08-24T18:54:10.192115600: NOTICE level: User with username: "nima" and ID: "6" created a new account.
+2021-08-24T19:09:00.652143100: NOTICE level: User with username: "erfan" and ID: "1" logged in.
+2021-08-24T19:09:49.234523800: INFO level: User with username: "erfan" and ID: "1" changed the account privacy to private.
+2021-08-24T19:10:14.160383700: NOTICE level: User with username: "erfan" and ID: "1" logged out.
+2021-08-24T19:12:13.269473300: NOTICE level: User with username: "mohammad" and ID: "4" logged in.
+2021-08-24T19:12:18.279725: INFO level: User with username: "mohammad" and ID: "4" changed the account privacy to private.
+2021-08-24T19:12:37.456582600: WARN level : Made "tweet" file.
+2021-08-24T19:12:37.459581800: WARN level : Made "tweet" file.
+2021-08-24T19:12:52.025623600: NOTICE level: User with username: "mohammad" and ID: "4" logged out.
+2021-08-24T19:13:02.848972500: NOTICE level: User with username: "erfan" and ID: "1" logged in.
+2021-08-24T19:15:07.922458: NOTICE level: User with username: "erfan" and ID: "1" logged out.
+2021-08-24T19:15:13.024610200: NOTICE level: Application exited.
+2021-08-24T19:15:17.470663800: NOTICE level: Application Started.
+2021-08-24T19:15:42.189475700: NOTICE level: User with username: "sadat" and ID: "2" logged in.
+2021-08-24T19:16:12.144422200: NOTICE level: Application exited.
+2021-08-24T19:17:21.482171500: NOTICE level: Application Started.
+2021-08-24T19:17:31.559395800: NOTICE level: User with username: "mohammad" and ID: "4" logged in.
+2021-08-24T19:18:45.999497900: NOTICE level: Application Started.
+2021-08-24T19:18:52.408890500: NOTICE level: User with username: "mohammad" and ID: "4" logged in.
+2021-08-24T19:20:47.430791300: NOTICE level: Application Started.
+2021-08-24T19:20:55.404617700: NOTICE level: User with username: "mohammad" and ID: "4" logged in.
+2021-08-24T19:35:51.715213300: NOTICE level: User with username: "mohammad" and ID: "4" logged out.
+2021-08-24T19:36:44.672141800: NOTICE level: User with username: "mojtaba" and ID: "3" logged in.
+2021-08-24T19:48:22.843713700: NOTICE level: User with username: "mojtaba" and ID: "3" logged out.
+2021-08-24T19:49:04.929358800: NOTICE level: User with username: "reza" and ID: "5" logged in.
+2021-08-24T19:51:39.842713200: NOTICE level: User with username: "reza" and ID: "5" logged out.
+2021-08-24T19:53:46.465909900: NOTICE level: User with username: "reza" and ID: "5" logged in.
+2021-08-24T19:53:57.060874900: INFO level: User with username: "reza" and ID: "5" changed the account privacy to private.
+2021-08-24T19:54:27.360050300: NOTICE level: User with username: "reza" and ID: "5" logged out.
+2021-08-24T19:54:33.366161900: NOTICE level: User with username: "nima" and ID: "6" logged in.
+2021-08-24T20:16:54.755424400: NOTICE level: Application exited.

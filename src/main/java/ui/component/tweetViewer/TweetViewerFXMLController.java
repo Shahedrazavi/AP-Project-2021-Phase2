@@ -62,6 +62,14 @@ public class TweetViewerFXMLController extends FXMLController{
         nextButton.setDisable(true);
     }
 
+    public void enablePrevious(){
+        previousButton.setDisable(false);
+    }
+
+    public void enableNext(){
+        nextButton.setDisable(false);
+    }
+
     public void showEmptyLabel(){
         emptyLabel.setVisible(true);
     }
